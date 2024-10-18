@@ -43,24 +43,37 @@ function App() {
         onChange={(e) => {
           setSearch(e.target.value);
         }}
+        className="search-input"
       ></input>
-      {data
-        .filter((pokemon, idx) => {
-          return search === ""
-            ? pokemon
-            : pokemon.name.includes(search.toLowerCase())
-            ? pokemon
-            : null;
-        })
-        .map((pokemon, idx) => {
-          return <Pokemon key={idx} name={pokemon.name} url={pokemon.url} />;
-        })}
-      <button disabled={!prevUrl} onClick={handlePrevClick}>
-        Previous
-      </button>
-      <button disabled={!nextUrl} onClick={handleNextClick}>
-        Next
-      </button>
+      <div className="btns">
+        <button className="btn" disabled={!prevUrl} onClick={handlePrevClick}>
+          Previous
+        </button>
+        <button className="btn" disabled={!nextUrl} onClick={handleNextClick}>
+          Next
+        </button>
+      </div>
+      <div className="pokemons-div">
+        {data
+          .filter((pokemon, idx) => {
+            return search === ""
+              ? pokemon
+              : pokemon.name.includes(search.toLowerCase())
+              ? pokemon
+              : null;
+          })
+          .map((pokemon, idx) => {
+            return <Pokemon key={idx} name={pokemon.name} url={pokemon.url} />;
+          })}
+      </div>
+      <div className="btns">
+        <button className="btn" disabled={!prevUrl} onClick={handlePrevClick}>
+          Previous
+        </button>
+        <button className="btn" disabled={!nextUrl} onClick={handleNextClick}>
+          Next
+        </button>
+      </div>
     </div>
   );
 }

@@ -15,6 +15,7 @@ export default function Pokemon({ name, url }) {
     getPokemon();
   }, [url]);
 
+  console.log(pokeData);
   const imgUrl = pokeData?.sprites.other["official-artwork"]["front_default"];
 
   return isLoading ? (
@@ -23,6 +24,42 @@ export default function Pokemon({ name, url }) {
     <div className="pokemon-card">
       <h1>{name}</h1>
       <img src={imgUrl} alt={name} />
+      <span className="poke-type-badge">{pokeData.types[0].type.name}</span>
+      <div className="poke-height-weight">
+        <p>{pokeData.height / 10} m</p>
+        <p>{pokeData.weight / 10} kgs</p>
+      </div>
+      <p className="poke-base-exp">
+        Base Experience: {pokeData["base_experience"]}
+      </p>
+      <p style={{ margin: 0 }}>Abilities: </p>
+      <div className="poke-abilities">
+        {pokeData.abilities.map((ability, idx) => {
+          return (
+            <div key={idx} className="poke-ability">
+              <p>
+                {ability.ability.name}{" "}
+                {ability["is_hidden"] && <span>(Hidden)</span>}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="poke-stats">
+        {" "}
+        Stats:{" "}
+        <div className="poke-stats-div">
+          {pokeData.stats.map((stat, idx) => {
+            return (
+              <div className="poke-stat" key={idx}>
+                <span>{stat.stat.name} </span>
+                <span>{stat["base_stat"]}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }

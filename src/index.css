@@ -1,13 +1,132 @@
-body {
+*{
+  box-sizing: border-box;
+  text-transform: capitalize;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-size: 1rem;
+
+}
+
+#root{
+  font-size: 16px;
+}
+
+body {
+  font-family: "Sora", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root{
+  --black: #211C08;
+  --grey: #353535;
+  --white: #F9F6E3;
+  --lightYellow: #FEE26C;
+  --darkYellow: #FEC43C;
+}
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  background-color: #211C08;
+  row-gap: 2em;
+}
+
+.search-input{
+  width: 60%;
+  height: 1em;
+  padding: 1.5em;
+  border-radius: 0.7em;
+  /* border: 1px solid var(--white); */
+}
+
+.pokemons-div{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 15px;
+  width: 100%;
+  margin-top: 2em
+}
+
+.pokemon-card{
+  background: linear-gradient(148deg, #FEC43C 0%, #FFB916 23.55%, #FEC43C 31.33%, #FEC43C 55.14%, #FFBA19 68.21%, #FEC43C 88.59%);
+  padding: 0.7em 2em;
+  border: 0.7em solid var(--lightYellow);
+  border-radius: 0.7em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+.pokemon-card h1{
+  font-size: 2rem;
+  text-align: center;
+}
+
+.pokemon-card img{
+  width: 100%;
+}
+
+.poke-type-badge{
+  position: absolute;
+  top:-0.7em ;
+  left: -0.7em;
+  padding: 0.3em 0.7em;
+  background-color: var(--white);
+  border-radius: 0.7em 0 0.7em 0;
+  font-size: 1rem;
+}
+
+.poke-height-weight, .poke-abilities{
+  display: flex;
+  justify-content: space-between;
+}
+
+.poke-abilities{
+  justify-content: flex-start;
+  column-gap: 15px;
+  row-gap: 10px;
+  background-color: var(--white);
+  padding: 0.5em 0.7em;
+  border-radius: 0.4em;
+  flex-wrap: wrap;
+
+}
+
+.poke-stats-div{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 15px;
+  width: 100%;
+  align-items: flex-start;
+  margin-top: 1em;
+}
+
+.poke-stat{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.btns{
+  display: flex;
+  width: 60%;
+  justify-content: flex-start;
+  column-gap: 2em;
+  width: fit-content;
+}
+
+
+
+.btn{
+  border: none;
+  cursor: pointer;
+  padding: 0.7em 1em;
+  border-radius: 0.4em;
+  font-size: 1rem;
 }
