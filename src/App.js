@@ -11,6 +11,7 @@ function App() {
   const [prevUrl, setPrevUrl] = useState(null);
 
   const [isLoading, setIsLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   async function getPokemonData() {
     const res = await axios.get(currentUrl);
@@ -36,9 +37,24 @@ function App() {
     <h1>Loading...</h1>
   ) : (
     <div className="App">
-      {data.map((pokemon, idx) => {
-        return <Pokemon key={idx} name={pokemon.name} url={pokemon.url} />;
-      })}
+      <input
+        placeholder="Search Pokemon"
+        value={search}
+        onChange={(e) => {
+          setSearch(e.target.value);
+        }}
+      ></input>
+      {data
+        .filter((pokemon, idx) => {
+          return search === ""
+            ? pokemon
+            : pokemon.name.includes(search.toLowerCase())
+            ? pokemon
+            : null;
+        })
+        .map((pokemon, idx) => {
+          return <Pokemon key={idx} name={pokemon.name} url={pokemon.url} />;
+        })}
       <button disabled={!prevUrl} onClick={handlePrevClick}>
         Previous
       </button>
